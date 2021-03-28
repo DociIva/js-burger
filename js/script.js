@@ -12,6 +12,14 @@ var burgerNome = document.getElementById('name');
 var ingredienti = document.getElementsByClassName('ingredient-checkbox');
 // ref, per il prezzo
 var diplayPrezzo = document.getElementById('price');
+// per lo sconto 
+var coupon = document.getElementById('coupon');
+
+
+// SETTINGS
+var coupons = ['1234ciao', '4567ciao', '891011ciao'];
+
+
 
 
 /**
@@ -55,10 +63,23 @@ btn.addEventListener('click', function(){
             prezzo += parseInt(ingredientiCheck.value);
 
            }
-       }
-       // finito il loop
+       } // finito il loop
        console.log(prezzo);
+
+
+       // 3. coupon / sconto , con il codice che ci inserisci l'utente
+       var couponCodice = coupon.value;
+       //console.log(couponCodice );
+       // combinazione di includes con if decisione dentro ( è chi dobbiamo cercare)
+       if(coupons.includes(couponCodice) ){
+        //console.log('codice corretto');
+
+        // 20% di sconto
+        prezzo -= prezzo * 0.2;
+       }
+
        // 2. stampa il prezzo
+       diplayPrezzo.innerHTML = prezzo.toFixed(2);
     }
 
 
