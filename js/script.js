@@ -14,12 +14,36 @@ var ingredienti = document.getElementsByClassName('ingredient-checkbox');
 var diplayPrezzo = document.getElementById('price');
 // per lo sconto 
 var coupon = document.getElementById('coupon');
-
+// ref , per gli add 
+var addBtn = document.getElementsByClassName('ingredient-add');
 
 // SETTINGS
 var coupons = ['1234ciao', '4567ciao', '891011ciao'];
 
 
+
+
+
+// 4. rendere cliccabili gli add per gli ingredienti
+// la lista è addBtn
+for( var i = 0; i < addBtn.length; i++){
+    // come prendo add attuale durante il loop, così quando di itera si prende uno, poi l'altro ecc
+    var add = addBtn[i];
+
+    // aggiungere un gestore di evento
+    add.addEventListener('click', function(){
+        // qua bisogna attraversare i nodi del dom all'indietro
+        console.log('CLICK!!');
+        console.log(this); // this è add che ho cliccato
+        console.log(this.previousElementSibling);
+       
+        // voglio il fratello che sta prima di me  (previous), chi c'è a parita l'input
+
+        var thisChackbox = this.previousElementSibling;
+        // checked (assegnazione (=)  ! not è parte dell'assegnazione)
+        thisChackbox.checked = ! thisChackbox.checked;
+    })
+}
 
 
 /**
@@ -32,8 +56,9 @@ var coupons = ['1234ciao', '4567ciao', '891011ciao'];
  * 1 fare un gestore di evento -- CLICK è: cosa stiamo ascoltando,
  * tra di loro sempre la VIRGOLA
  * 2 come facciamo ad indicare la funzionalità
- */
+ */ 
 
+// calcolo prezzo
 // ascoltatore di evento in posizione cosi
 btn.addEventListener('click', function(){
     //nel momento che fà il click voglio vedere il suo valore 
